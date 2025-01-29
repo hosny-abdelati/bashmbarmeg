@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كليات ومعاهد دبلوم تجارة - البشمبرمج</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="1.jpg" type="image/x-icon">
+    <style>
+        /* الأسلوب العام */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: rgb(208, 213, 190); /* لون خلفية برتقالي */
+            color: #333;
+            padding-top: 60px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #343a40; /* لون داكن */
+            z-index: 1000;
+            padding: 10px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .site-name {
+            color: #fff;
+            font-size: 22px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .navbar-links {
+            display: flex;
+        }
+
+        .navbar-links ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        .navbar-links ul li {
+            margin-left: 20px;
+        }
+
+        .navbar-links ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-links ul li a:hover {
+            color: #ffc107; /* لون ذهبي */
+        }
+
+        .dots {
+            font-size: 30px;
+            cursor: pointer;
+            color: #fff;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 10px 20px;
+            }
+
+            .dots {
+                display: block;
+            }
+
+            .navbar-links {
+                display: none;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background-color: #495057; /* لون داكن */
+                padding: 20px 0;
+                text-align: center;
+            }
+
+            .navbar-links.active {
+                display: block;
+            }
+
+            .navbar-links ul {
+                flex-direction: column;
+            }
+
+            .navbar-links ul li {
+                margin-bottom: 15px;
+            }
+
+            .navbar-links ul li a {
+                font-size: 18px;
+            }
+        }
+
+        /* قسم الكليات والمعاهد */
+        .institutes-section {
+            padding: 2em 1em;
+            text-align: right;
+        }
+
+        .institutes-section h1 {
+            font-size: 2.5em;
+            margin-bottom: 1em;
+            color: #343a40; /* لون داكن */
+        }
+
+        .institutes-section h2 {
+            font-size: 1.8em;
+            color: #343a40; /* لون داكن */
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+
+        .institutes-section p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .institutes-section ul {
+            list-style: none;
+            margin-right: 20px;
+            color: #555;
+            padding: 0;
+        }
+
+        .institutes-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .institutes-section .details-button {
+            background-color: #343a40; /* لون داكن */
+            color: #f2efef;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .institutes-section .details-button:hover {
+            background-color: #495057; /* لون داكن فاتح */
+        }
+
+        .divider {
+            border-bottom: 2px solid #df0808;
+            margin: 2em 0;
+        }
+
+        /* الفوتر */
+        .footer {
+            background-color: #343a40; /* لون داكن */
+            color: #fff;
+            padding: 30px 0;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+
+        .footer-column-left,
+        .footer-column-center,
+        .footer-column-right {
+            flex: 1;
+            padding: 15px;
+            min-width: 250px;
+        }
+
+        .footer-column-left h2,
+        .footer-column-center h3,
+        .footer-column-right h3 {
+            color: #fff;
+        }
+
+        .footer-column-left p {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .footer-sections {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer-section h3 {
+            color: #ffc107; /* لون ذهبي */
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ffc107; /* لون ذهبي */
+        }
+
+        .footer-img {
+            width: 50px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- الناف بار -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="1.jpg" alt="Logo" class="logo-image">
+            <span class="site-name">البشمبرمج </span>
+        </div>
+        <div class="dots" id="dots">&#x2630;</div>
+        <div class="navbar-links" id="navbarLinks">
+            <ul>
+                <li><a href="الريئسة.html">الرئيسية</a></li>
+                <li><a href="كليات التجارة .html">المعاهد المتاحة</a></li>
+                <li><a href="تجارة تخصص.html">التخصصات</a></li>
+                <li><a href="https://www.tansik.egypt.gov.eg/application/certificates/fani/defaultfani.aspx">التنسيق</a></li>
+                <li><a href="من انا.html">اتصل بنا</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- قسم الكليات والمعاهد -->
+<section class="institutes-section">
+    <h1>كليات ومعاهد دبلوم تجارة  </h1>
+
+    <!-- الكليات الحكومية -->
+    <h2>الكليات الحكومية</h2>
+    <div>
+        <h3>كلية تكنولوجيا إدارة ونظم معلومات (بورسعيد فقط)</h3>
+        <p>تقبل جميع الشعب.</p>
+        <a href="تكنولوجيا ادارة .HTML" class="details-button">عرض التفاصيل</a> <!-- زر التفاصيل -->
+    </div>
+    <div class="divider"></div>
+
+    <div>
+        <h3>كلية تجارة انتظام</h3>
+        <p>تقبل جميع الشعب</p>
+        <a href="كلية تجارة .html" class="details-button">عرض التفاصيل</a> <!-- زر التفاصيل -->
+    </div>
+    <div class="divider"></div>
+
+    <div>
+        <h3>كلية تجارة انتساب</h3>
+        <p>تقبل جميع الشعب</p>
+        <a href="كلية تجارة .html" class="details-button">عرض التفاصيل</a> <!-- زر التفاصيل -->
+    </div>
+    <div class="divider"></div>
+
+    <div>
+        <h3>كلية تكنولوجيا وتنمية (الزقازيق فقط)</h3>
+        <p>تقبل جميع الشعب</p>
+        <a href="تكنولوجيا وتنمية.html" class="details-button">عرض التفاصيل</a> <!-- زر التفاصيل -->
+    </div>
+    <div class="divider"></div>
+
+    <div>
+        <h3>كلية تربية</h3>
+        <p>تقبل جميع الشعب</p>
+        <a href="صناعةتربية.html" class="details-button">عرض التفاصيل</a> <!-- زر التفاصيل -->
+    </div>
+    <div class="divider"></div>
+
+    <div>
+        <h3>الكليات التكنولوجيا الجديدة (شعبة خدمات فندقية وسياحية)</h3>
+        <p>توجد في مدينة طيبة (الأقصر) وبورسعيد</p>
+        <a href="تكنولوجيا.html" class="details-button">عرض التفاصيل</a> <!-- زر التفاصيل -->
+    </div>
+    <div class="divider"></div>
+
+    <div>
+        <h3>كلية تعليم تبادلي سياحة وفنادق</h3>
+        <p>توجد في حلوان، الإسكندرية، والفيوم. تقبل جميع الشعب.</p>
+        <a href="سياحة.html" class="details-button">عرض التفاصيل</a> <!-- زر التفاصيل -->
+    </div>
+    <div class="divider"></div>
+
+    <!-- المعاهد الحكومية -->
+    <h2>المعاهد الحكومية</h2>
+    <div>
+        <h3>معهد فني صحي</h3>
+        <p>يقبل من شعبة إدارة وشعبة تسويق فقط</p>
+        <a href="فني صحي.html" class="details-button">عرض التفاصيل</a> <!-- زر التفاصيل -->
+    </div>
+    <div class="divider"></div>
+
+    <div>
+        <h3>معهد فني تجاري</h3>
+        <p>يقبل جميع الشعب</p>
+        <a href="فني تجارة.html" class="details-button">عرض التفاصيل</a> <!-- زر التفاصيل -->
+    </div>
+    <div class="divider"></div>
+
+    <!-- المعاهد الخاصة -->
+    <h2>المعاهد الخاصة</h2>
+    <div>
+        <h3>معهد إدارة وسكرتارية</h3>
+        <p> تحصل على بكالوريوس إدارة وسكرتارية. المصروفات حوالي 3500 جنيه سنوياً دراسة اربع سنوات</p>
+        <a href="كلية البنات.html" class="details-button">عرض التفاصيل</a> <!-- زر التفاصيل -->
+    </div>
+    <div class="divider"></div>
+
+    <div>
+        <h3>المعاهد التجارية العالية الخاصة</h3>
+        <p>   تمنح بكالوريوس تجارة أو نظم معلومات إدارية. المصروفات من 6000 إلى 10000 جنيه سنوياًاربع سنوات </p>
+        <p>الأقسام المتاحة</p>
+        <ul>
+            <li>نظم ومعلومات إدارية</li>
+            <li>علوم إدارية</li>
+            <li>إدارة ومحاسبة</li>
+            <li>إدارة أعمال</li>
+            <li>تجارة</li>
+            <li>أعمال دولية</li>
+            <li>إدارة بنوك وأسواق مالية</li>
+            <li>تسويق</li>
+        </ul>
+        <a href="نظم معلومات.html" class="details-button">عرض التفاصيل</a> <!-- زر التفاصيل -->
+    </div>
+    <div class="divider"></div>
+
+    <div>
+        <h3>معاهد السياحة والفنادق الخاصة</h3>
+        <p>  تمنح بكالوريوس سياحة وفنادق. المصروفات حوالي 100000 جنيه سنوياً.دراسة اربع سنوات</p>
+        <a href="معهد سياحة عالي.html" class="details-button">عرض التفاصيل</a> <!-- زر التفاصيل -->
+    </div>
+    <div class="divider"></div>
+
+    <div>
+        <h3>الجامعة العمالية</h3>
+        <p>شعبة علاقات صناعية أو فندقية. مدة الدراسة سنتين، تمنح دبلوم فوق المتوسط. المصروفات 6500 جنيه سنوياً.</p>
+        <a href="جامعة عمالية.html" class="details-button">عرض التفاصيل</a> <!-- زر التفاصيل -->
+    </div>
+    <div class="divider"></div>
+    <section class="institutes-section">
+        <h1>  كليات ومعاهد دبلوم تجارة</h1>
+    
+        <!-- القائمة المحدثة -->
+        
+        <ul>
+            <li>معهد فني صحى المنصورة</li>
+            <li>معهد فني صحى الزقازيق</li>
+            <li>معهد فني صحى طنطا</li>
+            <li>معهد فني صحى الإسماعيلية</li>
+            <li>معهد فني صحى بنها</li>
+            <li>فني صحي جنوب الوادي</li>
+            <li>معهد فني صحى الإسكندرية</li>
+            <li>معهد فني صحى بني سويف</li>
+            <li>تكنولوجيا الإدارة ونظم المعلومات بورسعيد</li>
+            <li>معهد فني صحى سوهاج</li>
+            <li>معهد فني صحى أسوان</li>
+            <li>تجارة بورسعيد</li>
+            <li>تجارة انتساب موجه بورسعيد</li>
+            <li>تجارة كفر الشيخ</li>
+            <li>تجارة قناة السويس بالإسماعيلية</li>
+            <li>تجارة المنصورة</li>
+            <li>تجارة دمياط</li>
+            <li>تربية طنطا</li>
+            <li>تجارة السويس</li>
+            <li>تجارة انتساب موجه كفر الشيخ</li>
+            <li>تجارة انتساب موجه قناة السويس بالإسماعيلية</li>
+            <li>تربية كفر الشيخ</li>
+            <li>تربية حلوان</li>
+            <li>تجارة الزقازيق</li>
+            <li>تجارة طنطا</li>
+            <li>تجارة انتساب موجه دمياط</li>
+            <li>تجارة انتساب موجه المنصورة</li>
+            <li>تجارة أسوان</li>
+            <li>تربية مدينة السادات</li>
+            <li>تجارة الإسكندرية</li>
+            <li>تجارة دمنهور</li>
+            <li>تجارة جنوب الوادي</li>
+            <li>تجارة العريش</li>
+            <li>تجارة انتساب موجه السويس</li>
+            <li>تربية سوهاج</li>
+            <li>تجارة أسيوط</li>
+            <li>تجارة مدينة السادات</li>
+            <li>تجارة القاهرة</li>
+            <li>تجارة بنها</li>
+            <li>تجارة انتساب موجه طنطا</li>
+            <li>تجارة انتساب موجه الإسكندرية</li>
+            <li>تجارة انتساب موجه دمنهور</li>
+            <li>تجارة انتساب موجه الزقازيق</li>
+            <li>تجارة المنوفية بشبين الكوم</li>
+            <li>تجارة عين شمس</li>
+            <li>تجارة انتساب موجه جنوب الوادي</li>
+            <li>تجارة سوهاج</li>
+            <li>تجارة وإدارة أعمال حلوان</li>
+            <li>تجارة بني سويف</li>
+            <li>تجارة انتساب موجه العريش</li>
+            <li>تجارة انتساب موجه أسوان</li>
+            <li>تجارة انتساب موجه القاهرة</li>
+            <li>تجارة انتساب موجه أسيوط</li>
+            <li>تجارة انتساب موجه بنها</li>
+            <li>تجارة انتساب موجه المنوفية بشبين الكوم</li>
+            <li>تجارة انتساب موجه مدينة السادات</li>
+            <li>تجارة انتساب موجه سوهاج</li>
+            <li>تجارة انتساب موجه عين شمس</li>
+            <li>تجارة انتساب موجه بني سويف</li>
+            <li>تجارة وإدارة أعمال انتساب موجه حلوان</li>
+            <li>تكنولوجيا وتنمية الزقازيق علوم مالية وإدارية</li>
+            <li>السياحة والفنادق تعليم تبادلى أسكندرية</li>
+            <li>السياحة والفنادق تعليم تبادلى حلوان</li>
+            <li>الفني التجارى بالروضه</li>
+            <li>تشغيل المطاعم بنظام التعليم التبادلي جامعة الفيوم</li>
+            <li>معهد عالي دراسات تعاونيه وإدارية بالمنيرة بمصروفات</li>
+            <li>الفني التجارى ببنها</li>
+            <li>الفني التجارى بدمنهور</li>
+            <li>سكرتاريه بكلية رمسيس بالقاهرة طالبات</li>
+            <li>كلية تكنولوجيا الخدمات الفندقية والسياحية شرق بورسعيد</li>
+            <li>الفني التجارى بالاسكندريه</li>
+            <li>الإدارة والسكرتارية والحاسب بكلية البنات القبطية بالعباسية إدارة وسكرتارية</li>
+            <li>الفني التجارى باسوان</li>
+            <li>العالي للحاسبات والمعلومات شعبة نظم طنطا</li>
+            <li>جامعة عمالية شعبة الفندقة مدينة نصر</li>
+            <li>ج.عمالية علاقات صناعية بمدينة نصر</li>
+            <li>الفني التجارى باسيوط</li>
+            <li>الإدارة والسكرتاريه بمصر القديمه</li>
+            <li>الإدارة والسكرتارية والحاسب بكلية البنات نظم المعلومات الإدارية</li>
+            <li>الفني التجارى بطنطا</li>
+            <li>الفني التجارى بالمطريه</li>
+            <li>معهد العباسية للعلوم التجارية والحاسبات الالية ش(نظم معلومات)</li>
+            <li>كلية تكنولوجيا الخدمات الفندقية والسياحية طيبة</li>
+            <li>الفني التجارى بقنا</li>
+            <li>الفني التجارى بشبرا</li>
+            <li>معهد العباسية للعلوم التجارية والحاسبات الالية ش(مالية)</li>
+            <li>العالي دراسات نوعية جيزه لنظم المعلومات الإدارية</li>
+            <li>الفني التجارى بالزقازيق</li>
+            <li>معهد السويس لنظم المعلومات الإدارية</li>
+            <li>ج.عمالية علاقات صناعية اسكندريه</li>
+            <li>معهد عالي حاسبات شعبة نظم معلومات ادارية بشبرا الخيمة</li>
+            <li>الفني التجارى بسوهاج</li>
+            <li>الفراعنة العالي إدارة أعمال</li>
+            <li>معهد الألسن العالي بمدينة نصر شعبة(ادارة - محاسبة - تجارة خارجية)</li>
+            <li>الفني التجارى بالعريش</li>
+            <li>عالي درسات نوعية بالجيزة قسم العلوم التجارية</li>
+            <li>معهد عالي حاسبات شعبة علوم الإدارة بشبرا الخيمة</li>
+            <li>الفني التجارى بالمحله الكبرى</li>
+            <li>الفني التجارى بالمنصوره</li>
+            <li>ج.عمالية علاقات صناعية طنطا</li>
+            <li>نظم معلومات ادارية قطاميه</li>
+            <li>الفراعنة العالي لنظم المعلومات الإدارية مريوطية بالهرم</li>
+            <li>معهد الجيزة العالى للعلوم الادارية بطموه جيزة شعبة نظم معلومات</li>
+            <li>الفني التجارى ببور سعيد</li>
+            <li>الفني التجارى بدمياط</li>
+            <li>الفني التجارى بقويسنا</li>
+            <li>الدلتا العالي للحاسبات بالمنصورة لنظم المعلومات الإدارية</li>
+            <li>ج.عمالية علاقات صناعية زقازيق</li>
+            <li>العالي حاسبات و نظم تجمع أول</li>
+            <li>المعهد العالى للعلوم الادارية بسوهاج</li>
+            <li>ج.عمالية علاقات صناعية اسيوط</li>
+            <li>معهد القاهرة الجديدة للعلوم الادارية والحاسب الالى بالتجمع الاول (شعبة ادارة)</li>
+            <li>العالي للعلوم الإداريه 6 اكتوبر</li>
+            <li>الجزيره العالي حاسب ونظم معلومات ادارية (شعبة نظم) بالمقطم</li>
+            <li>المعهد العالى للعلوم الادارية بأوسيم جيزة</li>
+            <li>المعهد العالى للعلوم الادارية ببنى سويف</li>
+            <li>الاكاديمية الدولية للهندسة وعلوم الاعلام (شعبة ادارة الاعمال)</li>
+            <li>المعهد العالى لنظم التجاره الالكترونيه سوهاج (شعبة نظم)</li>
+            <li>ج.عمالية علاقات صناعية بني سويف</li>
+            <li>العالي للحاسبات والمعلومات شعبة أعمال دولية طنطا</li>
+            <li>العالي دراسات متطوره بالهرم ش تجارة ومحاسبة</li>
+            <li>معهد القاهرة الجديدة للعلوم الادارية والحاسب الالى بالتجمع الاول (شعبة التسويق)</li>
+            <li>معهد الوادى العالي للعلوم الأدارية قسم نظم معلومات</li>
+            <li>ج.عمالية علاقات صناعية منصوره</li>
+            <li>معهد سيناء العالى للدراسات النوعية بمدينة العريش ش. علوم ادارية (بالمقر البديل بالاسماعيلية)</li>
+            <li>العالي للحاسب ونظم المعلومات ش إدارة تجمع خامس</li>
+            <li>المعهد العالى للعلوم التجارية بالمحلة الكبرى شعبة نظم معلومات</li>
+            <li>العالي للعلوم الإدارية بالقطامية إدراة أعمال</li>
+            <li>الجزيرة العالي شعبة تجارة المقطم</li>
+            <li>العالى للعلوم الادارية بلقاس دقهلية ش نظم معلومات ادارية</li>
+            <li>العالي قاهرة سياحة وفنادق مقطم</li>
+            <li>العالي إدارة شعبة نظم كفر الشيخ</li>
+            <li>المعهد العالي للعلوم الإدارية بأوسيم شعبة نظم معلومات</li>
+            <li>معهد الجيزة العالى للعلوم الادارية بطموه جيزة</li>
+            <li>عالي دراسات متطورة بالقطامية شعبة تجارة ومحاسبة</li>
+            <li>المدينة العالي للإدارة والتكنولوجيا شبرامنت ش نظم معلومات إدارية</li>
+            <li>معهد اكتوبر العالى للهندسة والتكنولوجيا (دارة اعمال)</li>
+            <li>معهد عالي طيبة إدارة البنوك وأسواق المال سقارة الهرم</li>
+            <li>طيبة العالي شعبة ادارة اعمال ومحاسبة المعادى</li>
+            <li>العبور العالي ك21 بطريق بلبيس لنظم المعلومات الإدارية</li>
+            <li>معهد الوادى العالي للعلوم الأدارية قسم محاسبة</li>
+            <li>عالي علوم إدارية متقدمة وحاسبات ش.(نظم معلومات) ك47 ط اسكندرية</li>
+            <li>ج.عمالية علاقات صناعية رأس البر</li>
+            <li>العالي للدراسات المتطورة بالقطامية شعبة نظم معلومات إدارية</li>
+            <li>معهد القاهرة الجديدة للعلوم الادارية والحاسب الالى بالتجمع الاول (شعبة نظم)</li>
+            <li>المدينة العالي للإدارة والتكنولوجيا شعبة إدارة بشبرامنت</li>
+            <li>القاهرة العالي لغات وترجمه مقطم لنظم المعلومات الإدارية</li>
+            <li>العبور العالي ك21 بطريق بلبيس شعبة اداره</li>
+            <li>المعهد العالى للإدارة والمحاسبة بسوهاج أخميم عربي / انجليزى</li>
+            <li>معهد عالي قاهرة ترجمة ش علوم إدارية مقطم</li>
+            <li>العالي للسياحه والفنادق بالسيوف بالأسكندرية لنظم المعلومات الإدارية</li>
+            <li>المعهد العالى للعلوم الادارية بالعباسة - الشرقية</li>
+            <li>طيبة العالي بالمعادى لنظم المعلومات الإدارية</li>
+            <li>معهد العباسية للحاسبات الالية والعلوم التجارية - ش ادارة اعمال</li>
+            <li>طيبة العالي نظم معلومات طريق سقاره بالهرم</li>
+            <li>ج.عمالية علاقات صناعية ك.الشيخ</li>
+            <li>العالي تسويق شعبة نظم تجمع أول</li>
+            <li>ج.عمالية علاقات صناعية اسوان</li>
+            <li>ج.عمالية علاقات صناعية اسماعيليه</li>
+            <li>القاهرة العالي إدارة الأعمال ونظم المعلومات بالتجمع الاول</li>
+            <li>مصر العالي شعبة نظم معلومات إدارية المنصورة</li>
+            <li>معهد المستقبل العالي للدراسات التكنولوجية المتخصصة شعبة نظم المعلومات الإدارية</li>
+        </ul>
+    </section>
+</section>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column-left">
+                <div class="footer-image">
+                    <img src="1.jpg" alt="Image" class="footer-img">
+                </div>
+                <h2>البشمبرمج للدبلومات الفنية</h2>
+                <p>هدفنا هو مساعدة طلاب الدبلومات الفنية في التخصصات المختلفة مثل: صناعة، تجارة، زراعة، سياحة وفنادق.</p>
+            </div>
+
+            <div class="footer-column-right">
+                <div class="footer-sections">
+                    <div class="footer-section">
+                        <h3>التخصصات</h3>
+                        <ul>
+                            <li><a href="كليات الصناعة.html">صناعة</a></li>
+                            <li><a href="كليات التجارة .html">تجارة</a></li>
+                            <li><a href="كليات ومعاهد زراعة.html">زراعة</a></li>
+                            <li><a href="كليات سياحة .html">سياحة وفنادق</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-section">
+                        <h3>الكليات والمعاهد</h3>
+                        <ul>
+                            <li><a href="كليات التجارة .html">الكليات الحكومية</a></li>
+                            <li><a href="معادلة تجارة.html">معادلة </a></li>
+                            <li><a href="الريئسة.html">الرئيسية </a></li>
+                            <li><a href="https://www.tansik.egypt.gov.eg/application/certificates/fani/defaultfani.aspx">تنسيق </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // إظهار وإخفاء القائمة في الأجهزة الصغيرة
+        const dots = document.getElementById('dots');
+        const navbarLinks = document.getElementById('navbarLinks');
+
+        dots.addEventListener('click', () => {
+            navbarLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>

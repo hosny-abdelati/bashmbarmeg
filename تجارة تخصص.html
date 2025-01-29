@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التخصصات - الصف الثالث التجاري</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f7c42f, #f36f21);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        header {
+            background-color: #ff8800;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px 20px;
+        }
+        .specialization {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 20px;
+            width: 280px;
+            position: relative;
+            animation: float 2s ease-in-out infinite;
+        }
+        .specialization:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        .specialization h3 {
+            margin: 15px 0;
+            color: #333;
+        }
+        .specialization i {
+            font-size: 40px;
+            color: #f36f21;
+            margin-bottom: 10px;
+        }
+        .specialization a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background-color: #ff8800;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .specialization a:hover {
+            background-color: #cc6c00;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+           
+            color: white;
+            padding-top: 60px;
+            /* إضافة المسافة لتعويض الناف بار */
+        }
+
+        /* النمط الأساسي للـ navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #2f3030;
+            /* لون خلفية داكن */
+            z-index: 1000;
+            padding: 10px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* إضافة ظل لتأثير احترافي */
+        }
+
+        /* تصميم الصورة واسم الموقع في الناف بار */
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 70%;
+            margin-right: 40px;
+        }
+
+        .site-name {
+            color: #ecf0f1;
+            /* اللون الأبيض الفاتح */
+            font-size: 22px;
+            font-weight: bold;
+            text-transform: uppercase;
+            /* جعل الاسم بالأحرف الكبيرة لإعطاء تأثير مميز */
+        }
+
+        /* عرض الروابط في الـ navbar بشكل افتراضي */
+        .navbar-links {
+            display: flex;
+        }
+
+        .navbar-links ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .navbar-links ul li {
+            margin-left: 20px;
+        }
+
+        .navbar-links ul li a {
+            color: #ecf0f1;
+            /* لون الرابط أبيض فاتح */
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-links ul li a:hover {
+            color: #ffa600;
+            /* تغيير اللون عند التمرير */
+        }
+
+        /* تصميم النقاط الثلاث */
+        .dots {
+            font-size: 30px;
+            cursor: pointer;
+            color: #ecf0f1;
+            display: none;
+            /* مخفية بشكل افتراضي */
+        }
+
+        /* في حال كانت الشاشة صغيرة (على الهواتف) */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 10px 20px;
+            }
+
+            /* إظهار النقاط الثلاث فقط في الشاشات الصغيرة */
+            .dots {
+                display: block;
+            }
+
+            .navbar-links {
+                display: none;
+                /* مخفية بشكل افتراضي على الهواتف */
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background-color: #2c3e50;
+                padding: 20px 0;
+                text-align: center;
+            }
+
+            .navbar-links.active {
+                display: block;
+                /* إظهار الروابط عند التفعيل */
+            }
+
+            .navbar-links ul {
+                flex-direction: column;
+                padding: 0;
+            }
+
+            .navbar-links ul li {
+                margin-bottom: 15px;
+            }
+
+            .navbar-links ul li a {
+                font-size: 18px;
+            }
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 30px 0;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+
+        .footer-column-left,
+        .footer-column-center,
+        .footer-column-right {
+            flex: 1;
+            padding: 15px;
+            min-width: 250px;
+        }
+
+        .footer-column-left h2,
+        .footer-column-center h3,
+        .footer-column-right h3 {
+            color: #e5e4e2;
+        }
+
+        .footer-column-left p {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .footer-sections {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer-section h3 {
+            color: #00bcd4;
+
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            text-decoration: none;
+            color: #f6f7f3;
+            font-size: 1rem;
+        }
+
+        .footer-section ul li a:hover {
+            color: #d4aa00;
+        }
+
+        .social-icon {
+            margin: 10px;
+            color: #ffffff;
+            font-size: 1.5rem;
+        }
+
+        .social-icon:hover {
+            color: #dcca09;
+        }
+
+        .footer-img {
+            width: 50px;
+            border-radius: 50%;
+        }
+      
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="1.jpg" alt="Logo" class="logo-image">
+            <span class="site-name">البشمبرمج </span>
+        </div>
+
+        <!-- النقاط الثلاث تظهر فقط في الهاتف -->
+        <div class="dots" id="dots">
+            &#x2630; <!-- هذا الرمز يمثل النقاط الثلاث -->
+        </div>
+
+        <!-- روابط الـ navbar -->
+        <div class="navbar-links" id="navbarLinks">
+            <ul>
+                <li><a href="الريئسة.html">الرئيسية</a></li>
+                <li><a href="https://t.me/c/2423499182/10">المواد الثقافية</a></li>
+                <li><a href="https://www.tansik.egypt.gov.eg/application/Certificates/Fani/DefaultFani.aspx">التنسيق</a></li>
+                <li><a href="النتيجة.htm">النتيجة</a></li>
+                <li><a href="القنوات.html">قنوات </a></li>
+            </ul>
+        </div>
+    </div>
+
+
+<header>
+    <h1>التخصصات - الصف الثالث التجاري</h1>
+</header>
+
+<div class="container">
+    <div class="specialization">
+        <i class="fas fa-gavel"></i>
+        <h3>شعبة قانون</h3>
+        <a href="https://commercialeducationeg.blogspot.com/2023/04/3-1.html" target="_blank">عرض</a>
+    </div>
+    <div class="specialization">
+        <i class="fas fa-briefcase"></i>
+        <h3>شعبة إدارة</h3>
+        <a href="https://commercialeducationeg.blogspot.com/2023/04/blog-post.html" target="_blank">عرض</a>
+    </div>
+    <div class="specialization">
+        <i class="fas fa-shield-alt"></i>
+        <h3>شعبة تأمينات</h3>
+        <a href="https://commercialeducationeg.blogspot.com/2023/04/blog-post_17.html" target="_blank">عرض</a>
+    </div>
+    <div class="specialization">
+        <i class="fas fa-chart-line"></i>
+        <h3>شعبة تسويق</h3>
+        <a href="https://commercialeducationeg.blogspot.com/2023/04/blog-post_815.html" target="_blank">عرض</a>
+    </div>
+</div>
+ <!-- Footer -->
+ <footer class="footer">
+    <div class="footer-content">
+        <div class="footer-column-left">
+            <div class="footer-image">
+                <img src="1.jpg" alt="Image" class="footer-img">
+            </div>
+            <h2>البشمبرمج للدبلومات الفنية</h2>
+            <p>هدفنا هو مساعدة طلاب الدبلومات الفنية في التخصصات المختلفة مثل: صناعة، تجارة، زراعة، سياحة وفنادق.
+            </p>
+        </div>
+
+        <div class="footer-column-right">
+            <div class="footer-sections">
+                <div class="footer-section">
+                    <h3>التخصصات</h3>
+                    <ul>
+                        <li><a href="الريئسة.html">صناعة</a></li>
+                        <li><a href="الريئسة.html">تجارة</a></li>
+                        <li><a href="الريئسة.html">زراعة</a></li>
+                        <li><a href="الريئسة.html">سياحة وفنادق</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>الكليات والمعاهد</h3>
+                    <ul>
+                        <li><a href="كليات التجارة .html">كليات</a></li>
+                        <li><a href="كليات التجارة .html">معاهد خاصة</a></li>
+                        <li><a href="كليات التجارة .html">معاهد حكومية</a></li>
+                        <li><a href="معادلة تجارة.html">معادلات </a></li>
+                        <li><a href="https://www.tansik.egypt.gov.eg/application/certificates/fani/defaultfani.aspx"> التنسيق</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-column-center">
+            <h3>للتواصل والاستفسار</h3>
+            <a href="https://www.facebook.com/profile.php?id=100027634399245/yourpage" target="_blank"
+                class="social-icon facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <!-- <a href="https://www.instagram.com/hosny_abdelati/profilecard/?igsh=NTRqcmFpNnN4OXE2/yourpage"
+                target="_blank" class="social-icon instagram">
+                <i class="fab fa-instagram"></i> -->
+            </a>
+            <a href="https://t.me/ElBashMprogrammer/yourpage" target="_blank" class="social-icon telegram">
+                <i class="fab fa-telegram-plane"></i>
+            </a>
+            <a href="https://whatsapp.com/channel/0029VabyFpsI7BeJIF4OSp0m/yourpage" target="_blank"
+                class="social-icon whatsapp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="mailto:hosnyandelattiy@gmail.com" class="social-icon email">
+                <i class="fas fa-envelope"></i>
+            </a>
+
+        </div>
+    </div>
+    <p>جميع الحقوق محفوظة &copy; 2025 - موقع البشمبرمج</p>
+
+</footer>
+
+<script>
+    const dots = document.getElementById('dots');
+    const navbarLinks = document.getElementById('navbarLinks');
+
+    // عند الضغط على النقاط الثلاث
+    dots.addEventListener('click', () => {
+        navbarLinks.classList.toggle('active'); // التبديل بين إظهار وإخفاء الروابط
+    });
+</script>
+</body>
+</html>
